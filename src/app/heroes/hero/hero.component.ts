@@ -27,4 +27,10 @@ export class HeroComponent {
     return `${this.nombre} - ${this.edad}`;
   }
 
+  reset(): void {
+    this.nombre = 'spiderman';
+    this.edad = 30;
+  }
+
+
 }
