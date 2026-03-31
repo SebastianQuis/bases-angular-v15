@@ -1,1 +1,16 @@
-<h1>main page component</h1>
+<h1>DBZ Personajes</h1>
+
+<hr>
+
+<div class="row">
+  <!-- listado -->
+  <div class="col">
+    <!-- enviando la lista de personajes desde el padre hasta el hijo con @input -->
+    <dbz-list [characterList]="characters"></dbz-list>
+  </div>
+
+  <!-- formulario -->
+  <div class="col">
+    <dbz-add-character></dbz-add-character>
+  </div>
+</div>
