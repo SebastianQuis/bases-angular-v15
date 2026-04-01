@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Character } from '../../interfaces/character.interface';
 
 @Component({
@@ -11,5 +11,16 @@ export class AppDbzListComponent {
   // recibe la lista desde el componente padre
   @Input()
   public characterList: Character[] = [];
+
+
+
+  // emite el evento al componente padre para eliminar un personaje
+  @Output()
+  public onDeleteCharacter = new EventEmitter<number>();
+
+  deleteCharacterById(index: number): void {
+    console.log({ index });
+    this.onDeleteCharacter.emit(index);
+  }
 
 }
