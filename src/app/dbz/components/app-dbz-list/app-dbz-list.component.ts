@@ -13,14 +13,12 @@ export class AppDbzListComponent {
   public characterList: Character[] = [];
 
 
-
   // emite el evento al componente padre para eliminar un personaje
   @Output()
-  public onDeleteCharacter = new EventEmitter<number>();
+  public onDeleteCharacter = new EventEmitter<string>();
 
-  deleteCharacterById(index: number): void {
-    console.log({ index });
-    this.onDeleteCharacter.emit(index);
+  deleteCharacterById(id: string): void {
+    this.onDeleteCharacter.emit(id);
   }
 
 }

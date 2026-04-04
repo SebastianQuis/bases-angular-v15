@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { DbzService } from '../services/dbz.service';
 import { Character } from '../interfaces/character.interface';
 
 @Component({
@@ -7,29 +8,17 @@ import { Character } from '../interfaces/character.interface';
 })
 
 export class MainComponent {
+  constructor(private dbzService: DbzService) { }
 
-  public characters: Character[] = [
-    {
-      name: 'Goku',
-      power: 15000
-    },
-    {
-      name: 'Vegeta',
-      power: 7500
-    }
-  ];
+  get characters(): Character[] {
+    return this.dbzService.characters;
+  }
 
-  // mismo nombre que el evento emitido en el componente hijo
+  onDeleteCharacter(id: string): void {
+    this.dbzService.onDeleteCharacterById(id);
+  }
+
   onNewCharacter(character: Character): void {
-    console.log("Main page: ", character);
-    this.characters.push(character);
+    this.dbzService.onNewCharacter(character);
   }
-
-  // mismo nombre que el evento emitido en el componente hijo
-  onDeleteCharacter(index: number): void {
-    console.log("Main page: ", index);
-    this.characters.splice(index, 1);
-  }
-
-
 }
